@@ -238,9 +238,9 @@ class OrderAPIView(generics.CreateAPIView):
         data['total_price'] = total_price
         del data['token']
 
-        # first_name = User.objects.get(id=user_id).first_name
-        # email = User.objects.get(id=user_id).email
-        # order_notice.delay(first_name, total_price, email)
+        first_name = User.objects.get(id=user_id).first_name
+        email = User.objects.get(id=user_id).email
+        order_notice.delay(first_name, total_price, email)
 
         serializer.save()
 

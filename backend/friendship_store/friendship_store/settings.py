@@ -91,11 +91,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'USER': 'postgres',
-        # 'NAME': 'postgres',
-        'NAME': 'friendship',
+        'NAME': 'postgres',
+        # 'NAME': 'friendship',
         'PASSWORD': os.getenv('PASSWORD_DB'),
-        # 'HOST': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'postgres',
+        # 'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -158,7 +158,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mailhog'
 EMAIL_PORT = 1025
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:5173',
@@ -170,14 +170,14 @@ CORS_ALLOW_METHODS = [
     'DELETE',
 ]
 
-# CELERY_BROKER_URL = 'redis://redis:6379/0'
-# CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 #
-REDIS_HOST = '127.0.0.1'
-REDIS_PORT = '6379'
-CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
-CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
-CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+# REDIS_HOST = '127.0.0.1'
+# REDIS_PORT = '6379'
+# CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+# CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+# CELERY_RESULT_BACKEND = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
